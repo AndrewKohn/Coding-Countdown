@@ -13,57 +13,98 @@ body {
   font-weight: 400;
 }
 
-.timer-window {
-  width: 50rem;
+.container {
+  width: 70rem;
   height: 30rem;
-  background-color: #222;
+  background-color: #444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*********/
+/* START */
+/*********/
+.start-window {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-}
-
-.timer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 5rem;
-  font-weight: 400;
-  color: #fff;
-}
-
-.btns {
-  background-color: burlywood;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 2.4rem;
+  width: 100%;
 }
 
 .btn {
-  border: none;
-  border-radius: 5px;
-  padding: 1rem 2rem;
-  font-size: 2rem;
   font-family: inherit;
-  color: #fff;
-  background-color: #444;
-  cursor: pointer;
+  font-size: 3.2rem;
+  background-color: #222;
+  color: #ddd;
+  border: none;
+  padding: 1.2rem 0;
+  letter-spacing: 0.3rem;
 }
 
-.btn--start:hover,
-.btn--start:active {
-  background-color: #233707;
+.btn--countdown:hover,
+.btn--countdown:active {
+  background-color: #ddd;
+  color: #222;
 }
 
-.btn--stop:hover,
-.btn--stop:active {
-  background-color: #481313;
+.btn--countdown:active {
+  background-color: #222;
+  color: #ddd;
 }
 
-.btn--inactive {
-  background-color: #333;
-  color: #aaa;
-  cursor: default;
+.btn--timer:hover,
+.btn--timer:active {
+  background-color: #ddd;
+  color: #222;
+}
+
+.btn--timer:active {
+  background-color: #222;
+  color: #ddd;
+}
+
+.btn--countdown:hover::before {
+  content: "CODING ";
+}
+
+.btn--timer:hover::before {
+  content: "CODING ";
+}
+
+/***********/
+/* BUTTONS */
+/***********/
+.btn--start {
+  width: 10rem;
+  height: 10rem;
+  background: none;
+  border: none;
+  background-color: aqua;
+  border-radius: 50%;
+}
+
+.btn--pause {
+  width: 10rem;
+  height: 10rem;
+  background: none;
+  border: none;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.btn--stop {
+  width: 7rem;
+  height: 7rem;
+  background: none;
+  border: none;
+  background-color: darkgoldenrod;
+  border-radius: 50%;
+}
+
+/*******************/
+/* HELPER SETTINGS */
+/*******************/
+.hidden {
+  display: none;
 }
