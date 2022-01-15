@@ -140,16 +140,16 @@ body {
   display: flex;
   align-items: center;
   gap: 1.6rem;
-  transform: translate(4.5rem, 0);
+  transform: translate(3.25rem, 0);
 }
 
 .btn--start {
   width: 10rem;
   height: 10rem;
   background: none;
-  background-color: aqua;
   border-radius: 50%;
   border: none;
+  background-color: #555;
 }
 
 .btn--pause {
@@ -157,7 +157,7 @@ body {
   height: 10rem;
   background: none;
   border: none;
-  background-color: darkgoldenrod;
+  background-color: #555;
   border-radius: 50%;
 }
 
@@ -166,7 +166,7 @@ body {
   height: 5rem;
   background: none;
   border: none;
-  background-color: red;
+  background-color: #555;
   border-radius: 50%;
 }
 
