@@ -18,25 +18,28 @@
     <main>
       <section class="container">
         <!-- START -->
-        <div class="start-window hidden">
+        <div class="start-window">
           <button class="btn btn--countdown">COUNTDOWN</button>
           <button class="btn btn--timer">TIMER</button>
-          <input class="countdown-input" placeholder="HH:MM" autofocus />
+          <input
+            class="countdown-input hidden"
+            placeholder="Enter desired HH:MM"
+          />
         </div>
 
         <!-- COUNTDOWN -->
-        <div class="countdown-window">
+        <div class="countdown-window hidden">
           <div class="countdown">
-            <p class="countdown--hours">05</p>
+            <p class="countdown--hours">00</p>
             <span>:</span>
-            <p class="countdown--minutes">34</p>
+            <p class="countdown--minutes">00</p>
             <span>:</span>
-            <p class="countdown--seconds">29</p>
+            <p class="countdown--seconds">00</p>
           </div>
 
           <!-- Pause -->
-          <p class="pause--text">PAUSED</p>
-          <div class="pause">
+          <p class="pause--text hidden">PAUSED</p>
+          <div class="pause hidden">
             <p class="pause--hours">05</p>
             <span>:</span>
             <p class="pause--minutes">34</p>
@@ -45,7 +48,23 @@
           </div>
 
           <!-- Buttons -->
-          <div class="btns">
+          <button class="btn--previous-screen hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+          <div class="btns hidden">
             <button class="btn--start">
               <svg
                 version="1.1"
@@ -106,4 +125,5 @@
       </section>
     </main>
   </body>
+  <script src="script.js"></script>
 </html>

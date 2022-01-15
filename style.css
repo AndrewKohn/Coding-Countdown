@@ -8,7 +8,7 @@ html {
 }
 
 body {
-  font-family: "Press Start 2P", sans-serif;
+  font-family: 'Press Start 2P', sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
   display: flex;
@@ -75,19 +75,19 @@ body {
 }
 
 .btn--countdown:hover::before {
-  content: "CODING_";
+  content: 'CODING_';
 }
 
 .btn--countdown:hover::after {
-  content: "();";
+  content: '();';
 }
 
 .btn--timer:hover::before {
-  content: "CODING_";
+  content: 'CODING_';
 }
 
 .btn--timer:hover::after {
-  content: "();";
+  content: '();';
 }
 
 .countdown-input {
@@ -121,6 +121,7 @@ body {
   display: flex;
   gap: 2rem;
   font-size: 7.2rem;
+  color: #fff;
 }
 
 .pause--text {
@@ -168,6 +169,16 @@ body {
   border: none;
   background-color: #555;
   border-radius: 50%;
+}
+
+.btn--previous-screen {
+  position: absolute;
+  transform: translate(-37rem, -18rem);
+  width: 6rem;
+  height: auto;
+  border: none;
+  background: none;
+  color: #999;
 }
 
 /*******************/
