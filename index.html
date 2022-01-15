@@ -18,14 +18,14 @@
     <main>
       <section class="container">
         <!-- START -->
-        <div class="start-window">
+        <div class="start-window hidden">
           <button class="btn btn--countdown">COUNTDOWN</button>
           <button class="btn btn--timer">TIMER</button>
-          <input class="countdown-limit" placeholder="HH:MM" autofocus />
+          <input class="countdown-input" placeholder="HH:MM" autofocus />
         </div>
 
         <!-- COUNTDOWN -->
-        <div class="countdown-window hidden">
+        <div class="countdown-window">
           <div class="countdown">
             <p class="countdown--hours">05</p>
             <span>:</span>
@@ -34,9 +34,9 @@
             <p class="countdown--seconds">29</p>
           </div>
 
-          <!-- PAUSE -->
-          <p class="pause--text hidden">PAUSED</p>
-          <div class="pause hidden">
+          <!-- Pause -->
+          <p class="pause--text">PAUSED</p>
+          <div class="pause">
             <p class="pause--hours">05</p>
             <span>:</span>
             <p class="pause--minutes">34</p>
@@ -44,7 +44,8 @@
             <p class="pause--seconds">29</p>
           </div>
 
-          <div class="btns hidden">
+          <!-- Buttons -->
+          <div class="btns">
             <button class="btn--start">
               <svg
                 version="1.1"
@@ -66,7 +67,7 @@
                 />
               </svg>
             </button>
-            <button class="btn--pause">
+            <button class="btn--pause hidden">
               <svg
                 version="1.1"
                 id="Capa_1"
