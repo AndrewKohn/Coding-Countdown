@@ -3,6 +3,32 @@ const startWindow = document.querySelector(`.start-window`);
 const countdownWindow = document.querySelector(`.countdown-window`);
 let hours, minutes, seconds;
 
+const displayHours = () => {
+  if (hours < 10) {
+    document.querySelector(`.countdown--hours`).textContent = `0` + hours;
+  } else {
+    document.querySelector(`.countdown--hours`).textContent = hours;
+  }
+};
+
+const displayMinutes = () => {
+  if (minutes < 10) {
+    document.querySelector(`.countdown--minutes`).textContent = `0` + minutes;
+  } else {
+    document.querySelector(`.countdown--minutes`).textContent = minutes;
+  }
+};
+
+const displaySeconds = () => {
+  if (seconds < 10) {
+    document.querySelector(`.countdown--seconds`).textContent = `0` + seconds;
+    seconds--;
+  } else {
+    document.querySelector(`.countdown--seconds`).textContent = seconds;
+    seconds--;
+  }
+};
+
 const countdownTimer = function () {};
 
 // START MENU
