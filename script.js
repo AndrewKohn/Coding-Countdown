@@ -52,9 +52,10 @@ const countdownTimer = function () {
       }
     } else {
       // console.log(`Timer STOPPED`);
+      document.querySelector(`.audio`).play();
       clearInterval(countdownInterval);
     }
-  }, 1000);
+  }, 500);
 };
 
 // START MENU
