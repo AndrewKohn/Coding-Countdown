@@ -129,61 +129,38 @@ body {
   color: #fff;
 }
 
-.pause--text {
-  font-size: 3.2rem;
+/*********/
+/* TIMER */
+/*********/
+.timer-window {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.4rem;
+  width: 100%;
 }
 
-.pause {
+.timer {
   display: flex;
-  gap: 0.25rem;
-  color: #999;
+  gap: 2rem;
+  font-size: 7.2rem;
+  color: #fff;
 }
 
 /***********/
 /* BUTTONS */
 /***********/
-.btns {
-  display: flex;
-  align-items: center;
-  gap: 1.6rem;
-  transform: translate(3.25rem, 0);
-}
-
-.btn--start {
-  width: 10rem;
-  height: 10rem;
-  background: none;
-  border-radius: 50%;
-  border: none;
-  background-color: #555;
-}
-
-.btn--pause {
-  width: 10rem;
-  height: 10rem;
-  background: none;
-  border: none;
-  background-color: #555;
-  border-radius: 50%;
-}
-
-.btn--stop {
-  width: 5rem;
-  height: 5rem;
-  background: none;
-  border: none;
-  background-color: #555;
-  border-radius: 50%;
-}
-
 .btn--previous-screen {
   position: absolute;
-  transform: translate(-37rem, -18rem);
+  transform: translate(-36rem, -17rem);
   width: 6rem;
   height: auto;
   border: none;
   background: none;
   color: #999;
+  border-radius: 50%;
 }
 
 /*******************/

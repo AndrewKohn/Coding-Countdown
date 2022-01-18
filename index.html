@@ -31,102 +31,47 @@
         <!-- COUNTDOWN -->
         <div class="countdown-window hidden">
           <div class="countdown">
-            <p class="countdown--hours">00</p>
+            <p id="countdown--hours">00</p>
             <span>:</span>
-            <p class="countdown--minutes">00</p>
+            <p id="countdown--minutes">00</p>
             <span>:</span>
-            <p class="countdown--seconds">00</p>
-          </div>
-
-          <audio class="audio">
-            <source src="sound/Click.mp3" />
-          </audio>
-
-          <!-- Pause -->
-          <p class="pause--text hidden">PAUSED</p>
-          <div class="pause hidden">
-            <p class="pause--hours">05</p>
-            <span>:</span>
-            <p class="pause--minutes">34</p>
-            <span>:</span>
-            <p class="pause--seconds">29</p>
-          </div>
-
-          <!-- Buttons -->
-          <button class="btn--previous-screen hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </button>
-          <div class="btns hidden">
-            <button class="btn--start">
-              <svg
-                version="1.1"
-                id="Layer_1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                x="0px"
-                y="0px"
-                viewBox="0 0 512 512"
-                style="enable-background: new 0 0 512 512"
-                xml:space="preserve"
-              >
-                <path
-                  d="M256,0C114.608,0,0,114.608,0,256s114.608,256,256,256s256-114.608,256-256S397.392,0,256,0z M256,496
-			C123.664,496,16,388.336,16,256S123.664,16,256,16s240,107.664,240,240S388.336,496,256,496z"
-                />
-                <polygon
-                  points="189.776,141.328 189.776,370.992 388.672,256.16 		"
-                />
-              </svg>
-            </button>
-            <button class="btn--pause hidden">
-              <svg
-                version="1.1"
-                id="Capa_1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                x="0px"
-                y="0px"
-                viewBox="0 0 60 60"
-                style="enable-background: new 0 0 60 60"
-                xml:space="preserve"
-              >
-                <path
-                  d="M30,0C13.458,0,0,13.458,0,30s13.458,30,30,30s30-13.458,30-30S46.542,0,30,0z M27,46h-8V14h8V46z M41,46h-8V14h8V46z"
-                />
-              </svg>
-            </button>
-            <button class="btn--stop">
-              <svg
-                version="1.1"
-                id="Capa_1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                x="0px"
-                y="0px"
-                viewBox="0 0 60 60"
-                style="enable-background: new 0 0 60 60"
-                xml:space="preserve"
-              >
-                <path
-                  d="M30,0C13.458,0,0,13.458,0,30s13.458,30,30,30s30-13.458,30-30S46.542,0,30,0z M44,44H16V16h28V44z"
-                />
-              </svg>
-            </button>
+            <p id="countdown--seconds">00</p>
           </div>
         </div>
+
+        <!-- TIMER -->
+        <div class="timer-window hidden">
+          <div class="timer">
+            <p id="timer--hours">00</p>
+            <span>:</span>
+            <p id="timer--minutes">00</p>
+            <span>:</span>
+            <p id="timer--seconds">00</p>
+          </div>
+        </div>
+
+        <!-- Audio -->
+        <audio class="audio">
+          <source src="sound/Click.mp3" />
+        </audio>
+
+        <!-- Button -->
+        <button class="btn--previous-screen">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </button>
       </section>
     </main>
   </body>

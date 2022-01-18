@@ -1,42 +1,53 @@
 'use strict';
 const startWindow = document.querySelector(`.start-window`);
 const countdownWindow = document.querySelector(`.countdown-window`);
+const timerWindow = document.querySelector(`.timer-window`);
 const countdownInput = document.querySelector(`.countdown-input`);
+const previousScreenBtn = document.querySelector(`.btn--previous-screen`);
+let selection = 'countdown';
 let hours, minutes, seconds;
+var countdownInterval;
+var timerInterval;
+
+//Weird initialization because of id???
+let hoursText = document.getElementById(`${selection}--hours`);
+let minutesText = document.getElementById(`${selection}--minutes`);
+let secondsText = document.getElementById(`${selection}--seconds`);
 
 const displayHours = () => {
   if (hours < 10) {
-    document.querySelector(`.countdown--hours`).textContent = `0` + hours;
+    hoursText.textContent = `0` + hours;
   } else {
-    document.querySelector(`.countdown--hours`).textContent = hours;
+    hoursText.textContent = hours;
   }
 };
 
 const displayMinutes = () => {
   if (minutes < 10) {
-    document.querySelector(`.countdown--minutes`).textContent = `0` + minutes;
+    minutesText.textContent = `0` + minutes;
   } else {
-    document.querySelector(`.countdown--minutes`).textContent = minutes;
+    minutesText.textContent = minutes;
   }
 };
 
 const displaySeconds = () => {
   if (seconds < 10) {
-    document.querySelector(`.countdown--seconds`).textContent = `0` + seconds;
+    secondsText.textContent = `0` + seconds;
   } else {
-    document.querySelector(`.countdown--seconds`).textContent = seconds;
+    secondsText.textContent = seconds;
   }
 };
 
-const countdownTimer = function () {
-  let TIME_MAX = (hours * 60 + minutes) * 60;
+const codingCountdown = function () {
+  selection = `countdown`;
+  let maxTime = (hours * 60 + minutes) * 60;
   seconds = 0;
 
-  const countdownInterval = setInterval(() => {
-    if (TIME_MAX != 0) {
+  countdownInterval = setInterval(() => {
+    if (maxTime != 0) {
       if (seconds < 60) {
-        TIME_MAX--;
-        console.log(TIME_MAX);
+        maxTime--;
+        console.log(maxTime);
         seconds--;
         if (seconds < 0) {
           seconds = 59;
@@ -58,6 +69,21 @@ const countdownTimer = function () {
   }, 1000);
 };
 
+const codiingTimer = function () {
+  selection = `timer`;
+
+  timerInterval = setInterval(() => {
+    if (seconds >= 0) {
+    }
+  }, 1000);
+};
+
+// const init = () => {
+//   document.getElementById(`${selection}--hours`).value = `00`;
+//   document.getElementById(`${selection}--minutes`).value = `00`;
+//   document.getElementById(`${selection}--seconds`).value = `00`;
+// };
+
 // START MENU
 // Countdown btn pressed
 document
@@ -70,19 +96,35 @@ document
 // Countdown input
 countdownInput.addEventListener('keydown', function (userKey) {
   if (userKey.key === 'Enter') {
+    // init();
     const userInput = countdownInput.value;
     hours = Number(userInput.split(':')[0]);
     minutes = Number(userInput.split(':')[1]);
+    console.log(hours);
+    console.log(minutes);
 
     displayHours();
     displayMinutes();
-    countdownTimer();
+    codingCountdown();
 
     startWindow.classList.toggle('hidden');
     countdownWindow.classList.toggle('hidden');
+    countdownInput.classList.toggle(`hidden`);
   }
 
   if (userKey.key === `Escape`) {
     countdownInput.classList.toggle(`hidden`);
   }
+});
+
+//Previous screen button
+previousScreenBtn.addEventListener('click', function () {
+  clearInterval(countdownInterval);
+  if (!countdownWindow.classList.contains(`hidden`)) {
+    countdownWindow.classList.toggle(`hidden`);
+  }
+  if (!timerWindow.classList.contains(`hidden`)) {
+    timerWindow.classList.toggle(`hidden`);
+  }
+  startWindow.classList.toggle(`hidden`);
 });
