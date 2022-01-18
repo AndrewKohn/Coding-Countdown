@@ -55,7 +55,7 @@ const countdownTimer = function () {
       document.querySelector(`.audio`).play();
       clearInterval(countdownInterval);
     }
-  }, 500);
+  }, 1000);
 };
 
 // START MENU
