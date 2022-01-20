@@ -4,42 +4,74 @@ const countdownWindow = document.querySelector(`.countdown-window`);
 const timerWindow = document.querySelector(`.timer-window`);
 const countdownInput = document.querySelector(`.countdown-input`);
 const previousScreenBtn = document.querySelector(`.btn--previous-screen`);
-let selection = 'countdown';
 let hours, minutes, seconds;
 var countdownInterval;
 var timerInterval;
 
 //Weird initialization because of id???
-let hoursText = document.getElementById(`${selection}--hours`);
-let minutesText = document.getElementById(`${selection}--minutes`);
-let secondsText = document.getElementById(`${selection}--seconds`);
+//Look up issues around the variable ${} not changing in functions
+let hoursCDText = document.getElementById(`countdown--hours`);
+let minutesCDText = document.getElementById(`countdown--minutes`);
+let secondsCDText = document.getElementById(`$countdown--seconds`);
+let hoursTMText = document.getElementById(`timer--hours`);
+let minutesTMText = document.getElementById(`timer--minutes`);
+let secondsTMText = document.getElementById(`timer--seconds`);
 
 const displayHours = () => {
-  if (hours < 10) {
-    hoursText.textContent = `0` + hours;
-  } else {
-    hoursText.textContent = hours;
+  if (!countdownWindow.classList.contains(`hidden`)) {
+    if (hours < 10) {
+      hoursCDText.textContent = `0` + hours;
+    } else {
+      hoursCDText.textContent = hours;
+    }
+  }
+
+  if (!timerWindow.classList.contains(`hidden`)) {
+    if (hours < 10) {
+      hoursTMText.textContent = `0` + hours;
+    } else {
+      hoursTMText.textContent = hours;
+    }
   }
 };
 
 const displayMinutes = () => {
-  if (minutes < 10) {
-    minutesText.textContent = `0` + minutes;
-  } else {
-    minutesText.textContent = minutes;
+  if (!countdownWindow.classList.contains(`hidden`)) {
+    if (minutes < 10) {
+      minutesCDText.textContent = `0` + minutes;
+    } else {
+      minutesCDText.textContent = minutes;
+    }
+  }
+
+  if (!timerWindow.classList.contains(`hidden`)) {
+    if (minutes < 10) {
+      minutesTMText.textContent = `0` + minutes;
+    } else {
+      minutesTMText.textContent = minutes;
+    }
   }
 };
 
 const displaySeconds = () => {
-  if (seconds < 10) {
-    secondsText.textContent = `0` + seconds;
-  } else {
-    secondsText.textContent = seconds;
+  if (!countdownWindow.classList.contains(`hidden`)) {
+    if (seconds < 10) {
+      secondsCDText.textContent = `0` + seconds;
+    } else {
+      secondsCDText.textContent = seconds;
+    }
+  }
+
+  if (!timerWindow.classList.contains(`hidden`)) {
+    if (seconds < 10) {
+      secondsTMText.textContent = `0` + seconds;
+    } else {
+      secondsTMText.textContent = seconds;
+    }
   }
 };
 
 const codingCountdown = function () {
-  selection = `countdown`;
   let maxTime = (hours * 60 + minutes) * 60;
   seconds = 0;
 
@@ -69,12 +101,30 @@ const codingCountdown = function () {
   }, 1000);
 };
 
-const codiingTimer = function () {
-  selection = `timer`;
+const codingTimer = function () {
+  seconds = 0;
+  minutes = 0;
+  hours = 0;
+  displayHours();
+  displayMinutes();
+  displaySeconds();
 
   timerInterval = setInterval(() => {
-    if (seconds >= 0) {
+    if (seconds >= 0 && seconds < 60) {
+      seconds++;
+      if (seconds === 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes === 60) {
+          minutes = 0;
+          hours++;
+          displayHours();
+        }
+        displayMinutes();
+      }
+      displaySeconds();
     }
+    console.log(seconds);
   }, 1000);
 };
 
@@ -105,11 +155,14 @@ countdownInput.addEventListener('keydown', function (userKey) {
 
     displayHours();
     displayMinutes();
+    secondsCDText.textContent = `00`;
+
     codingCountdown();
 
     startWindow.classList.toggle('hidden');
     countdownWindow.classList.toggle('hidden');
     countdownInput.classList.toggle(`hidden`);
+    previousScreenBtn.classList.toggle(`hidden`);
   }
 
   if (userKey.key === `Escape`) {
@@ -117,9 +170,19 @@ countdownInput.addEventListener('keydown', function (userKey) {
   }
 });
 
+//Timer button pressed
+document.querySelector(`.btn--timer`).addEventListener('click', function () {
+  timerWindow.classList.toggle(`hidden`);
+  startWindow.classList.toggle('hidden');
+  previousScreenBtn.classList.toggle(`hidden`);
+
+  codingTimer();
+});
+
 //Previous screen button
 previousScreenBtn.addEventListener('click', function () {
   clearInterval(countdownInterval);
+  clearInterval(timerInterval);
   if (!countdownWindow.classList.contains(`hidden`)) {
     countdownWindow.classList.toggle(`hidden`);
   }
@@ -127,4 +190,5 @@ previousScreenBtn.addEventListener('click', function () {
     timerWindow.classList.toggle(`hidden`);
   }
   startWindow.classList.toggle(`hidden`);
+  previousScreenBtn.classList.toggle(`hidden`);
 });
