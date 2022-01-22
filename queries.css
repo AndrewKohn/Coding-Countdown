@@ -26,11 +26,8 @@
 }
 
 /* Below 512px */
+/* TODO: height = 100vh leads to unnecessary scrolling on mobile devices */
 @media (max-width: 32em) {
-  body {
-    height: 100%;
-  }
-
   .container {
     width: 35rem;
   }
