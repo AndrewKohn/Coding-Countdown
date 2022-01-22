@@ -1,7 +1,7 @@
 # Coding-Countdown
 Use as a countdown/timer to clock how much time has been spent coding.
 
-![](https://gyazo.com/80a83648b7e00d8c8d1b1648e266a823?raw=true)
+![](https://i.gyazo.com/80a83648b7e00d8c8d1b1648e266a823.png)
 
 Goal for this small project was to use it in the future in conjunction with what was made in Java previously (MyCodingTracker).
 
