@@ -117,9 +117,12 @@ countdownInput.addEventListener('keydown', function (userKey) {
   if (userKey.key === `Enter`) {
     const userInput = countdownInput.value;
     hours = Number(userInput.split(`:`)[0]);
-    minutes = Number(userInput.split(`:`)[1]);
-    console.log(`Hours = ` + hours);
-    console.log(`Minutes = ` + minutes);
+    if (Number(userInput.split(`:`)[1])) {
+      minutes = Number(userInput.split(`:`)[1]);
+    } else {
+      minutes = 0;
+    }
+
     let userSelection = `countdown`;
 
     codingCountdown(userSelection);
@@ -136,7 +139,9 @@ document.querySelector(`.btn--timer`).addEventListener('click', function () {
   timerWindow.classList.toggle(`hidden`);
   startWindow.classList.toggle('hidden');
   previousScreenBtn.classList.toggle(`hidden`);
+
   let userSelection = `timer`;
+
   codingTimer(userSelection);
 });
 
@@ -144,12 +149,15 @@ document.querySelector(`.btn--timer`).addEventListener('click', function () {
 previousScreenBtn.addEventListener('click', function () {
   clearInterval(countdownInterval);
   clearInterval(timerInterval);
+
   if (!countdownWindow.classList.contains(`hidden`)) {
     countdownWindow.classList.toggle(`hidden`);
   }
+
   if (!timerWindow.classList.contains(`hidden`)) {
     timerWindow.classList.toggle(`hidden`);
   }
+
   startWindow.classList.toggle(`hidden`);
   previousScreenBtn.classList.toggle(`hidden`);
 });
