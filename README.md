@@ -7,7 +7,7 @@ Goal for this small project was to use it in the future in conjunction with what
 ### To-Do in the future
 1. Link this to the backend w/ ability to store the data regardless of what device I'm currently using.
 2. Add a pause/play/stop button to the timer.
-3. Look more into media queries and add in orientations.
+3. Look more into media queries and add in orientations.<br/>
   3a. Study difference between rem/em.  Only understand the basics of em; should look into it more.
   3b. Mobile device scrolling issues with 'height: 100vh'.
 4. Change color theme and css to make things pop out more.
