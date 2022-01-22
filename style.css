@@ -9,7 +9,7 @@ html {
 
 *:focus {
   outline: none;
-  box-shadow: 0 0 3rem 0.25rem rgba(150, 150, 150, 0.5);
+  box-shadow: 0 0 3rem 0.25rem rgba(200, 200, 200, 0.5);
 }
 
 body {
@@ -80,7 +80,7 @@ body {
 }
 
 .btn--countdown:hover::before {
-  content: 'CODING_';
+  content: 'coding';
 }
 
 .btn--countdown:hover::after {
@@ -88,7 +88,7 @@ body {
 }
 
 .btn--timer:hover::before {
-  content: 'CODING_';
+  content: 'coding';
 }
 
 .btn--timer:hover::after {

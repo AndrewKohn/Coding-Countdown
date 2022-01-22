@@ -1,119 +1,85 @@
-'use strict';
+`use strict`;
 const startWindow = document.querySelector(`.start-window`);
 const countdownWindow = document.querySelector(`.countdown-window`);
 const timerWindow = document.querySelector(`.timer-window`);
 const countdownInput = document.querySelector(`.countdown-input`);
 const previousScreenBtn = document.querySelector(`.btn--previous-screen`);
-let hours, minutes, seconds;
-var countdownInterval;
-var timerInterval;
+var countdownInterval, timerInterval;
 
-//Weird initialization because of id???
-//Look up issues around the variable ${} not changing in functions
-let hoursCDText = document.getElementById(`countdown--hours`);
-let minutesCDText = document.getElementById(`countdown--minutes`);
-let secondsCDText = document.getElementById(`countdown--seconds`);
-let hoursTMText = document.getElementById(`timer--hours`);
-let minutesTMText = document.getElementById(`timer--minutes`);
-let secondsTMText = document.getElementById(`timer--seconds`);
-
-const displayHours = () => {
-  if (!countdownWindow.classList.contains(`hidden`)) {
-    if (hours < 10) {
-      hoursCDText.textContent = `0` + hours;
-    } else {
-      hoursCDText.textContent = hours;
-    }
-  }
-
-  if (!timerWindow.classList.contains(`hidden`)) {
-    if (hours < 10) {
-      hoursTMText.textContent = `0` + hours;
-    } else {
-      hoursTMText.textContent = hours;
-    }
-  }
+/*************/
+/* FUNCTIONS */
+/*************/
+const displayHours = selection => {
+  let currentHour =
+    hours < 10
+      ? (document.getElementById(`${selection}--hours`).textContent =
+          `0` + hours)
+      : (document.getElementById(`${selection}--hours`).textContent = hours);
+  return currentHour;
 };
 
-const displayMinutes = () => {
-  if (!countdownWindow.classList.contains(`hidden`)) {
-    if (minutes < 10) {
-      minutesCDText.textContent = `0` + minutes;
-    } else {
-      minutesCDText.textContent = minutes;
-    }
-  }
-
-  if (!timerWindow.classList.contains(`hidden`)) {
-    if (minutes < 10) {
-      minutesTMText.textContent = `0` + minutes;
-    } else {
-      minutesTMText.textContent = minutes;
-    }
-  }
+const displayMinutes = selection => {
+  let currentMinutes =
+    minutes < 10
+      ? (document.getElementById(`${selection}--minutes`).textContent =
+          `0` + minutes)
+      : (document.getElementById(`${selection}--minutes`).textContent =
+          minutes);
+  return currentMinutes;
 };
 
-const displaySeconds = () => {
-  if (!countdownWindow.classList.contains(`hidden`)) {
-    if (seconds < 10) {
-      secondsCDText.textContent = `0` + seconds;
-    } else {
-      secondsCDText.textContent = seconds;
-    }
-  }
-
-  if (!timerWindow.classList.contains(`hidden`)) {
-    if (seconds < 10) {
-      secondsTMText.textContent = `0` + seconds;
-    } else {
-      secondsTMText.textContent = seconds;
-    }
-  }
+const displaySeconds = selection => {
+  let currentSeconds =
+    seconds < 10
+      ? (document.getElementById(`${selection}--seconds`).textContent =
+          `0` + seconds)
+      : (document.getElementById(`${selection}--seconds`).textContent =
+          seconds);
+  return currentSeconds;
 };
 
-const codingCountdown = function () {
-  let maxTime = (hours * 60 + minutes) * 60;
+const timerInit = selection => {
+  hours = 0;
+  minutes = 0;
   seconds = 0;
-  if (hours < 10) {
-    hoursCDText.textContent = `0` + hours;
-  } else {
-    hoursCDText.textContent = hours;
-  }
+  document.getElementById(`${selection}--hours`).textContent = '00';
+  document.getElementById(`${selection}--minutes`).textContent = '00';
+  document.getElementById(`${selection}--seconds`).textContent = '00';
+};
+
+const codingCountdown = function (selection) {
+  displayHours(selection);
+  displayMinutes(selection);
+  seconds = 0;
+  displaySeconds(selection);
+
+  let maxTime = (hours * 60 + minutes) * 60;
 
   countdownInterval = setInterval(() => {
     if (maxTime != 0) {
-      if (seconds < 60) {
-        maxTime--;
-        console.log(maxTime);
-        seconds--;
-        if (seconds < 0) {
-          seconds = 59;
-          minutes--;
-          if (minutes < 0) {
-            hours--;
-            minutes = 59;
-            displayHours();
-          }
-          displayMinutes();
+      maxTime--;
+      seconds--;
+      if (seconds < 0) {
+        seconds = 59;
+        minutes--;
+        if (minutes < 0) {
+          hours--;
+          minutes = 59;
+          displayHours(selection);
         }
-        displaySeconds();
+        displayMinutes(selection);
       }
+      displaySeconds(selection);
     } else {
-      console.log(`Countdown STOPPED`);
+      console.log(`Countdown ENDED`);
       document.querySelector(`.audio`).play();
       clearInterval(countdownInterval);
     }
   }, 1000);
 };
 
-const codingTimer = function () {
-  seconds = 0;
-  minutes = 0;
-  hours = 0;
-  displayHours();
-  displayMinutes();
-  secondsCDText.textContent = `00`;
-  displaySeconds();
+const codingTimer = function (selection) {
+  timerInit(selection);
 
   timerInterval = setInterval(() => {
     if (seconds >= 0 && seconds < 60) {
@@ -124,24 +90,20 @@ const codingTimer = function () {
         if (minutes === 60) {
           minutes = 0;
           hours++;
-          displayHours();
+          displayHours(selection);
         }
-        displayMinutes();
+        displayMinutes(selection);
       }
-      displaySeconds();
+      displaySeconds(selection);
     }
-    console.log(seconds);
   }, 1000);
 };
 
-// const init = () => {
-//   document.getElementById(`${selection}--hours`).value = `00`;
-//   document.getElementById(`${selection}--minutes`).value = `00`;
-//   document.getElementById(`${selection}--seconds`).value = `00`;
-// };
-
-// START MENU
-// Countdown btn pressed
+/**********/
+/* EVENTS */
+/**********/
+//Countdown Button pressed
+//  Will show the input textfield over the countdown button
 document
   .querySelector(`.btn--countdown`)
   .addEventListener(`click`, function () {
@@ -149,26 +111,23 @@ document
     countdownInput.focus();
   });
 
-// Countdown input
+//Countdown Input
+//  Take in user's desired HH:MM
 countdownInput.addEventListener('keydown', function (userKey) {
-  if (userKey.key === 'Enter') {
-    // init();
+  if (userKey.key === `Enter`) {
     const userInput = countdownInput.value;
-    hours = Number(userInput.split(':')[0]);
-    minutes = Number(userInput.split(':')[1]);
-    console.log(hours);
-    console.log(minutes);
+    hours = Number(userInput.split(`:`)[0]);
+    minutes = Number(userInput.split(`:`)[1]);
+    console.log(`Hours = ` + hours);
+    console.log(`Minutes = ` + minutes);
+    let userSelection = `countdown`;
 
-    codingCountdown();
+    codingCountdown(userSelection);
 
     startWindow.classList.toggle('hidden');
     countdownWindow.classList.toggle('hidden');
     countdownInput.classList.toggle(`hidden`);
     previousScreenBtn.classList.toggle(`hidden`);
-  }
-
-  if (userKey.key === `Escape`) {
-    countdownInput.classList.toggle(`hidden`);
   }
 });
 
@@ -177,11 +136,11 @@ document.querySelector(`.btn--timer`).addEventListener('click', function () {
   timerWindow.classList.toggle(`hidden`);
   startWindow.classList.toggle('hidden');
   previousScreenBtn.classList.toggle(`hidden`);
-
-  codingTimer();
+  let userSelection = `timer`;
+  codingTimer(userSelection);
 });
 
-//Previous screen button
+//Previous screen button pressed
 previousScreenBtn.addEventListener('click', function () {
   clearInterval(countdownInterval);
   clearInterval(timerInterval);
