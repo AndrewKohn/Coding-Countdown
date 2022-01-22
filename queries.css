@@ -27,6 +27,10 @@
 
 /* Below 512px */
 @media (max-width: 32em) {
+  body {
+    height: 100%;
+  }
+
   .container {
     width: 35rem;
   }
