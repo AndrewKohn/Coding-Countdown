@@ -12,7 +12,7 @@ var timerInterval;
 //Look up issues around the variable ${} not changing in functions
 let hoursCDText = document.getElementById(`countdown--hours`);
 let minutesCDText = document.getElementById(`countdown--minutes`);
-let secondsCDText = document.getElementById(`$countdown--seconds`);
+let secondsCDText = document.getElementById(`countdown--seconds`);
 let hoursTMText = document.getElementById(`timer--hours`);
 let minutesTMText = document.getElementById(`timer--minutes`);
 let secondsTMText = document.getElementById(`timer--seconds`);
@@ -74,6 +74,11 @@ const displaySeconds = () => {
 const codingCountdown = function () {
   let maxTime = (hours * 60 + minutes) * 60;
   seconds = 0;
+  if (hours < 10) {
+    hoursCDText.textContent = `0` + hours;
+  } else {
+    hoursCDText.textContent = hours;
+  }
 
   countdownInterval = setInterval(() => {
     if (maxTime != 0) {
@@ -94,7 +99,7 @@ const codingCountdown = function () {
         displaySeconds();
       }
     } else {
-      // console.log(`Timer STOPPED`);
+      console.log(`Countdown STOPPED`);
       document.querySelector(`.audio`).play();
       clearInterval(countdownInterval);
     }
@@ -107,6 +112,7 @@ const codingTimer = function () {
   hours = 0;
   displayHours();
   displayMinutes();
+  secondsCDText.textContent = `00`;
   displaySeconds();
 
   timerInterval = setInterval(() => {
@@ -152,10 +158,6 @@ countdownInput.addEventListener('keydown', function (userKey) {
     minutes = Number(userInput.split(':')[1]);
     console.log(hours);
     console.log(minutes);
-
-    displayHours();
-    displayMinutes();
-    secondsCDText.textContent = `00`;
 
     codingCountdown();
 

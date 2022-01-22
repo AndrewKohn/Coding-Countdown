@@ -161,6 +161,13 @@ body {
   background: none;
   color: #999;
   border-radius: 50%;
+  cursor: pointer;
+}
+
+.btn--previous-screen:hover,
+.btn--previous-screen:active {
+  color: #111;
+  background-color: rgba(150, 150, 150, 0.5);
 }
 
 /*******************/
