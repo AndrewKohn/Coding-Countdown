@@ -129,6 +129,32 @@ body {
   color: #fff;
 }
 
+.bar-background {
+  position: absolute;
+  top: 0;
+  transform: translateY(13.5rem);
+  width: 50rem;
+  height: 5rem;
+  background-color: #222;
+  border: #777 solid 5px;
+}
+
+#progress-bar {
+  width: 50rem;
+  height: 5rem;
+  background-color: #777;
+  animation: progress-animation 10s linear;
+}
+
+@keyframes progress-animation {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 50rem;
+  }
+}
+
 /*********/
 /* TIMER */
 /*********/

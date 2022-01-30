@@ -4,7 +4,10 @@ const countdownWindow = document.querySelector(`.countdown-window`);
 const timerWindow = document.querySelector(`.timer-window`);
 const countdownInput = document.querySelector(`.countdown-input`);
 const previousScreenBtn = document.querySelector(`.btn--previous-screen`);
+const progressElem = document.getElementById(`progress-bar`);
 var countdownInterval, timerInterval;
+
+// TODO: change countdown's progress bar's with according to query width.
 
 /*************/
 /* FUNCTIONS */
@@ -54,7 +57,9 @@ const codingCountdown = function (selection) {
   displaySeconds(selection);
 
   let maxTime = (hours * 60 + minutes) * 60;
+  progressElem.style.animationDuration = `${maxTime}s`;
 
+  // countdown timer
   countdownInterval = setInterval(() => {
     if (maxTime != 0) {
       maxTime--;
