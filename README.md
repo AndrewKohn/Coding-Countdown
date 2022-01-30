@@ -12,3 +12,4 @@ Goal for this small project was to use it in the future in conjunction with what
   3a. Study difference between rem/em.  Only understand the basics of em; should look into it more.<br/>
   3b. Mobile device scrolling issues with 'height: 100vh'.<br/>
 4. Change color theme and css to make things pop out more.
+5. Adjust progress bar in Countdown section to match query widths.
